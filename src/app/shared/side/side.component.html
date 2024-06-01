@@ -1,0 +1,50 @@
+<div class="sidebar-menu sticky-sidebar-menu">
+
+    <!-- logo start -->
+    <div class="logo">
+        <h1><a [routerLink]="['/']"><img class="p-2" src="assets/images/sidelogo.png" alt="logo-icon"> </a></h1>
+    </div>
+
+
+
+    <div class="logo-icon text-center">
+        <a><img src="assets/images/logo.png" alt="logo-icon"> </a>
+    </div>
+    <!-- //logo end -->
+
+    <div class="sidebar-menu-inner">
+
+        <!-- sidebar nav start -->
+        <ul class="nav nav-pills nav-stacked custom-nav">
+
+            <!--  -->
+            <li *ngIf="role=='admin'" (mouseenter)="addHoverClass(reportLi)" (mouseleave)="removeHoverClass(reportLi)"
+                #reportLi (click)="setActive(reportLi)" [class.active]="isActive(reportLi)">
+                <a [routerLink]="['/complainList']"><i class="fa fa-server"></i>
+                    <span>Report</span></a>
+            </li>
+            <li *ngIf="role=='admin'" (mouseenter)="addHoverClass(createUser)"
+                (mouseleave)="removeHoverClass(createUser)" #createUser (click)="setActive(createUser)"
+                [class.active]="isActive(createUser)">
+                <a [routerLink]="['/admin/createUser']"><i class="fa fa-users"></i><span>
+                        User </span></a>
+            </li>
+            <li (mouseenter)="addHoverClass(complain)" (mouseleave)="removeHoverClass(complain)" #complain
+                (click)="setActive(complain)" [class.active]="isActive(complain)">
+                <a [routerLink]="['/complain']"><i class="fa fa-database"></i><span> Complains </span></a>
+            </li>
+            <li (mouseenter)="addHoverClass(attendance)" (mouseleave)="removeHoverClass(attendance)" #attendance
+                (click)="setActive(attendance)" [class.active]="isActive(attendance)">
+                <a [routerLink]="['/attendance']"><i class="fa fa-calendar"></i><span> Attendance </span></a>
+            </li>
+
+        </ul>
+        <!-- //sidebar nav end -->
+        <!-- toggle button start -->
+        <a [className]="isMenuCollapsed" (click)="toggleMenu()">
+            <i class="fa fa-angle-double-left menu-collapsed__left"><span>Collapse Sidebar</span></i>
+            <i class="fa fa-angle-double-right menu-collapsed__right"></i>
+        </a>
+        <!-- //toggle button end -->
+    </div>
+</div>

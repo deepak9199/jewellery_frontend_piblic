@@ -1,0 +1,164 @@
+<app-loading *ngIf="loading"></app-loading>
+<div *ngIf="!loading">
+    <div class="fullwidth-template">
+        <!-- banner -->
+        <div class="container">
+            <owl-carousel-o [options]="customOptionsbanner">
+                <ng-template *ngFor="let bannerobj of banner_list" carouselSlide>
+                    <div data-slick-index="0" aria-hidden="false" tabindex="-1" role="option"
+                        aria-describedby="slick-slide00">
+                        <div class="slider-inner equal-element" style="position: relative;">
+                            <div>
+                                <img src="{{bannerobj.image}}" alt="img">
+                            </div>
+                        </div>
+                    </div>
+                </ng-template>
+            </owl-carousel-o>
+        </div>
+        <!-- main -->
+        <div *ngFor="let catobj of home_page_list" class="ysera-product produc-featured rows-space-65">
+            <div class="container">
+                <h3 class="custommenu-title-blog">
+                    {{catobj.name}}
+                </h3>
+                <owl-carousel-o [options]="customOptions">
+                    <ng-template *ngFor="let productobj of catobj.category_products" carouselSlide>
+                        <div class="product-item style-5">
+                            <div class="product-inner equal-element">
+                                <div class="product-top">
+                                    <div class="flash">
+                                        <span class="onnew">
+                                            <span class="text">
+                                                new
+                                            </span>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="product-thumb">
+                                    <div class="thumb-inner">
+                                        <a>
+                                            <img [routerLink]="['/buy']" src="{{productobj.images[0]}}" alt="img">
+                                        </a>
+                                        <div class="thumb-group">
+                                            <div class="loop-form-add-to-cart">
+                                                <button class="single_add_to_cart_button button">Add to cart</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="product-count-down">
+                                        <div class="ysera-countdown" data-y="2020" data-m="9" data-w="2" data-d="30"
+                                            data-h="20" data-i="60" data-s="60"></div>
+                                    </div>
+                                </div>
+                                <div class="product-info">
+                                    <h5 class="product-name product_title">
+                                        <a> {{productobj.name}} </a>
+                                    </h5>
+                                    <h5 class="product-name product_title">
+                                        <a> {{productobj.sku_code}} </a>
+                                    </h5>
+                                    <div class="group-info">
+                                        <div class="stars-rating">
+                                            <div class="star-rating">
+                                                <span class="star-3"></span>
+                                            </div>
+                                            <div class="count-star">
+                                                (3)
+                                            </div>
+                                        </div>
+                                        <div class="price">
+                                            <!-- <del>
+                                                65
+                                            </del> -->
+                                            <ins>
+                                                ₹ {{productobj.amount}}
+                                            </ins>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </ng-template>
+                </owl-carousel-o>
+            </div>
+        </div>
+
+        <div class="ysera-tabs  default rows-space-40">
+            <div class="container">
+                <div class="tab-head">
+                    <ul class="tab-link">
+
+                        <li class="active">
+                            <a data-toggle="tab" aria-expanded="true" href="#new_arrivals">New Arrivals </a>
+                        </li>
+
+                    </ul>
+                </div>
+                <div class="tab-container">
+
+                    <div id="new_arrivals" class="tab-panel active">
+                        <div class="ysera-product">
+                            <ul class="row list-products auto-clear equal-container product-grid">
+
+                                <li *ngFor="let product of product_list"
+                                    class="product-item product-type-variable col-lg-3 col-md-4 col-sm-6 col-xs-6 col-ts-12 style-1">
+                                    <div class="product-inner equal-element">
+                                        <div class="product-top">
+                                            <div class="flash">
+                                                <span class="onnew">
+                                                    <span class="text">
+                                                        new
+                                                    </span>
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div class="product-thumb">
+                                            <div class="thumb-inner">
+                                                <a>
+                                                    <img [routerLink]="['/buy']" src="{{product.images[0]}}" alt="img">
+                                                </a>
+                                                <div class="thumb-group">
+                                                    <div class="loop-form-add-to-cart">
+                                                        <button class="single_add_to_cart_button button">Add to cart
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="product-info">
+                                            <h5 class="product-name product_title">
+                                                <a> {{product.name}} </a>
+                                            </h5>
+                                            <h5 class="product-name product_title">
+                                                <a> {{product.sku_code}} </a>
+                                            </h5>
+                                            <div class="group-info">
+                                                <div class="stars-rating">
+                                                    <div class="star-rating">
+                                                        <span class="star-3"></span>
+                                                    </div>
+                                                    <div class="count-star">
+                                                        (3)
+                                                    </div>
+                                                </div>
+                                                <div class="price">
+                                                    <!-- <del>
+                                                        65
+                                                    </del> -->
+                                                    <ins>
+                                                        ₹ {{product.amount}}
+                                                    </ins>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

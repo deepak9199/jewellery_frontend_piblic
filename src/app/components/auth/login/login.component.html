@@ -1,0 +1,29 @@
+<app-loading *ngIf="loading"></app-loading>
+<form *ngIf="!loading" #myLoginForm="ngForm" (ngSubmit)="signIn(); myLoginForm.reset()">
+    <p class="form-row form-row-wide">
+        <input [(ngModel)]="form_login.email" name="email" #email="ngModel" required type="email"
+            class="form-control login_text_field_bg input-style" placeholder="Enter Email" />
+    </p>
+    <div *ngIf="email.invalid && (email.dirty || email.touched)">
+        <div *ngIf="email.errors?.['required']">Email is required.</div>
+    </div>
+    <p class="form-row form-row-wide">
+        <input [(ngModel)]="form_login.password" name="password" #password="ngModel" required type="password"
+            class="form-control login_text_field_bg input-style" placeholder="*******" />
+    </p>
+    <div *ngIf="password.invalid && (password.dirty || password.touched)">
+        <div *ngIf="password.errors?.['required']">Password is required.</div>
+    </div>
+    <p class="form-row">
+        <label class="form-checkbox">
+            <input type="checkbox" class="input-checkbox">
+            <span>
+                Remember me
+            </span>
+        </label>
+        <input type="submit" class="button" [disabled]="myLoginForm.invalid" value="Login">
+    </p>
+    <p class="lost_password">
+        <a [routerLink]="['/forgetpass']">Lost your password?</a>
+    </p>
+</form>
